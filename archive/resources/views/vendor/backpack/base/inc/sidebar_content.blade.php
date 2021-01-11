@@ -4,3 +4,4 @@
 <li class='nav-item'><a class='nav-link' href='{{ backpack_url('type') }}'><i class='nav-icon la la-question'></i> Types</a></li>
 <li class='nav-item'><a class='nav-link' href='{{ backpack_url('event') }}'><i class='nav-icon la la-question'></i> Events</a></li>
 <li class='nav-item'><a class='nav-link' href='{{ backpack_url('archivefile') }}'><i class='nav-icon la la-question'></i> Archivefiles</a></li>
+<li class='nav-item'><a class='nav-link' href='{{ backpack_url('user') }}'><i class='nav-icon la la-question'></i> Users</a></li>

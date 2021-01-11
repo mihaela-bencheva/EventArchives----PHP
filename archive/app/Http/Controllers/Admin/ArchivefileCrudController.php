@@ -46,7 +46,7 @@ class ArchivefileCrudController extends CrudController
                 'label'     => 'Files',
                 'type'      => 'upload_multiple',
                 'upload'    => true,
-                'disk'      => 'uploads', // if you store files in the /public folder, please omit this; if you store them in /storage or S3, please specify it;
+                //'disk'      => 'uploads', // if you store files in the /public folder, please omit this; if you store them in /storage or S3, please specify it;
                 // // optional:
                 // 'temporary' => 10 // if using a service, such as S3, that requires you to make temporary URLs this will make a URL that is valid for the number of minutes specified
             ]
@@ -91,7 +91,7 @@ class ArchivefileCrudController extends CrudController
             ]
         );
         CRUD::setFromDb(); // columns
-
+        CRUD::column('created_at');
         /**
          * Columns can be defined using the fluent syntax or array syntax:
          * - CRUD::column('price')->type('number');

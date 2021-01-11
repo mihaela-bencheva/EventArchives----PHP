@@ -4,6 +4,8 @@ namespace App\Models;
 
 use Backpack\CRUD\app\Models\Traits\CrudTrait;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Support\Str;
+use Illuminate\Support\Facades\Storage;
 
 class Archivefile extends Model
 {
@@ -39,9 +41,8 @@ class Archivefile extends Model
 
     public function setFilesAttribute($value)
     {
-        var_dump($obj);
         $attribute_name = "file_name";
-        $disk = "storage";
+        $disk = "public";
         $destination_path = "public/archives";
 
         $this->uploadMultipleFilesToDisk($value, $attribute_name, $disk, $destination_path);
