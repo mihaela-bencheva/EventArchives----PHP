@@ -31,6 +31,11 @@ class EventCrudController extends CrudController
                 'label' => 'Year',
                 'type' => 'number',
             ],
+            [
+                'name' => 'description',
+                'label' => 'Description',
+                'type' => ($show ? "textarea": 'ckeditor'),
+            ],
             [    // Select2Multiple = n-n relationship (with pivot table)
                 'label'     => "Types",
                 'type'      => ($show ? "select": 'select2_multiple'),

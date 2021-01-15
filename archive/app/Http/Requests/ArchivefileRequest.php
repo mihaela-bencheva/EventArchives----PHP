@@ -26,7 +26,9 @@ class ArchivefileRequest extends FormRequest
     public function rules()
     {
         return [
-            // 'name' => 'required|min:5|max:255'
+            'archive_name' => 'required|min:5|max:255',
+            'event_id' => 'required',
+            'file_name' => 'required'
         ];
     }
 

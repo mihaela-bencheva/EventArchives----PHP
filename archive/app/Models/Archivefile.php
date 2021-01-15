@@ -24,6 +24,9 @@ class Archivefile extends Model
     // protected $fillable = [];
     // protected $hidden = [];
     // protected $dates = [];
+    protected $casts = [
+        'file_name' => 'array'
+    ];
 
     /*
     |--------------------------------------------------------------------------
@@ -35,17 +38,21 @@ class Archivefile extends Model
     {
         parent::boot();
         static::deleting(function($obj) {
-            Storage::delete(Str::replaceFirst('storage/','public/', $obj->file_name));
+            if (count((array)$obj->file_name)) {
+                foreach ($obj->file_name as $file_path) {
+                    \Storage::disk('public')->delete($file_path);
+                }
+            }
         });
     }
 
-    public function setFilesAttribute($value)
+    public function setFileNameAttribute($value)
     {
         $attribute_name = "file_name";
         $disk = "public";
-        $destination_path = "public/archives";
-
+        $destination_path = "storage/files";
         $this->uploadMultipleFilesToDisk($value, $attribute_name, $disk, $destination_path);
+        
     }
     /*
     |--------------------------------------------------------------------------
