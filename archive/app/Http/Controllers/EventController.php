@@ -24,11 +24,11 @@ class EventController extends BaseController
     public function searchByEventName(Request $request)
     {
         $eventName = $request->input('search-name');
-        
-        $results = Event::query()
+
+        $events = Event::query()
             ->where('event_name', 'LIKE', "%{$eventName}%")
             ->get();
 
-        return view('layouts/search', compact('results'));
+        return view('layouts/event', compact('events'));
     }
 }

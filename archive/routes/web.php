@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\EventController;
+use App\Http\Controllers\TypeController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -19,4 +20,8 @@ Route::get('/', function () {
 });
 Route::get('/events',[EventController::class,'getAllEvents']);
 
-Route::get('/search',[EventController::class,'searchByEventName'])->name('search-name');
+Route::get('/search-name',[EventController::class,'searchByEventName'])->name('search-name');
+
+Route::get('/search-type',[TypeController::class,'searchByTypeOfEvent'])->name('search-type');
+
+Route::get('/search',[TypeController::class,'searchByAll']);
