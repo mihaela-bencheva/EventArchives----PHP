@@ -18,7 +18,17 @@ class EventController extends BaseController
 
     public function getEventById($id)
     {
-        $result = DB::select('select * from events where id = :id', ['id' => $id]);
+        $event = DB::select('select * from events where id = :id', ['id' => $id]);
+
+        $event_types = DB::select('select * from event_types where event_id = :id', ['id' => $id]);
+
+        $types = array();
+        foreach($event_types as $event_type)
+        {
+            $types[] = Type::all()->where('id', (int)$event_type);
+        }
+
+        $archives = DB::select('select * from events left join files on events.id = files.event_id where events.id = :id', ['id' => $id]);
     }
 
     public function searchByEventName(Request $request)

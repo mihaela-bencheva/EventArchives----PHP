@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\EventController;
 use App\Http\Controllers\TypeController;
+use App\Http\Controllers\ArchiveController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -18,10 +19,21 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', function () {
     return view('welcome');
 });
+
+//all Events
 Route::get('/events',[EventController::class,'getAllEvents']);
 
+//search by event name
 Route::get('/search-name',[EventController::class,'searchByEventName'])->name('search-name');
 
+//search by type of event
 Route::get('/search-type',[TypeController::class,'searchByTypeOfEvent'])->name('search-type');
 
+//search
 Route::get('/search',[TypeController::class,'searchByAll']);
+
+//all archives
+Route::get('/archives',[ArchiveController::class,'getAllArchives']);
+
+//current type
+Route::get('/type/{id}',[TypeController::class,'getTypeById']);

@@ -18,7 +18,16 @@ class TypeController extends BaseController
 
     public function getTypeById($id)
     {
-        $result = DB::select('select * from events where id = :id', ['id' => $id]);
+        $type = DB::select('select * from types where id = :id', ['id' => $id]);
+
+        $event_types = DB::select('select * from event_types where type_id = :id', ['id' => $id]);
+
+        $events = array();
+        foreach($events as $event) 
+        {
+            $events = Event::all()->where('id', (int)$event);
+        }
+        return view('layouts/current-type', compact('type','events'));
     }
 
     public function searchByTypeOfEvent(Request $request)
