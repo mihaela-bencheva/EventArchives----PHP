@@ -21,6 +21,26 @@
                 </div>
             </div>
         @endforeach
+        'types' => $types, 'archives' => $archives
+        <!-- @foreach($types as $type)
+            <div class="d-flex justify-content-center col-lg-12 col-xl-6 py-3">
+                <div class="card box-shadow  d-flex bg-danger">
+                    <ul>
+                        <li>
+                            <a target="_blank" href="{{ url('type/'.$type->id) }}">{{$type->name}}</a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        @endforeach
+        @foreach($archives as $archive)
+            <div class="d-flex justify-content-center col-lg-12 col-xl-6 py-3">
+                <div class="card box-shadow  d-flex bg-danger">
+                    <p class="card-text text-white h5 p-2">Name: {{$archive->archive_name}}</p>
+                    <p class="card-text text-white h5 p-2">Created At: {{$archive->created_at}}</p>
+                </div>
+            </div>
+        @endforeach -->
     </div>
 </body>
 

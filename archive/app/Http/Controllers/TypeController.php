@@ -18,30 +18,28 @@ class TypeController extends BaseController
 
     public function getTypeById($id)
     {
-        $type = DB::select('select * from types where id = :id', ['id' => $id]);
+        $events = DB::table('events')
+            ->join('event_types', 'events.id', '=', 'event_types.event_id')
+            ->join('types', 'event_types.type_id', '=', 'types.id')
+            ->select('types.name', 'events.event_name', 'events.event_year')
+            ->where('types.id', $id)
+            ->get();
 
-        $event_types = DB::select('select * from event_types where type_id = :id', ['id' => $id]);
-
-        $events = array();
-        foreach($events as $event) 
-        {
-            $events = Event::all()->where('id', (int)$event);
-        }
-        return view('layouts/current-type', compact('type','events'));
+        return view('layouts.types.current-type', compact('events'));
     }
 
     public function searchByTypeOfEvent(Request $request)
     {
         $typeInput = $request->input('search-type');
 
-        $event_types = DB::table('events')
+        $events = DB::table('events')
             ->join('event_types', 'events.id', '=', 'event_types.event_id')
             ->join('types', 'event_types.type_id', '=', 'types.id')
-            ->select('types.name', 'events.event_name', 'events.image', 'events.event_year')
+            ->select('types.name', 'events.event_name', 'events.image', 'events.event_year', 'events.description')
             ->where('types.name', 'LIKE', "%{$typeInput}%")
             ->get();
 
-        return view('layouts/type', compact('event_types'));
+        return view('layouts/event', compact('events'));
     }
 
     public function searchByAll()

@@ -19,7 +19,12 @@ class ArchiveController extends BaseController
 
     public function getArchiveById($id)
     {
-        $archive = DB::select('select * from files left join events on files.event_id = events.id where files.id = :id', ['id' => $id]);
+        $archive_event = DB::table('events')
+            ->join('files', 'events.id', '=', 'files.event_id')
+            ->select('files.archive_name', 'files.description', 'files.created_at', 'events.event_name', 'events.event_year')
+            ->where('files.id', $id)
+            ->get();
+        return view('layouts.archives.current-archive', compact('archive_event'));
     }
 
     public function getAllFiles()
