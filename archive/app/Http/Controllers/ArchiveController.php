@@ -21,7 +21,7 @@ class ArchiveController extends BaseController
     {
         $archive_event = DB::table('events')
             ->join('files', 'events.id', '=', 'files.event_id')
-            ->select('files.archive_name', 'files.description', 'files.created_at', 'events.event_name', 'events.event_year')
+            ->select('files.archive_name', 'files.description', 'files.created_at', 'events.event_name', 'events.event_year', 'events.id')
             ->where('files.id', $id)
             ->get();
         return view('layouts.archives.current-archive', compact('archive_event'));

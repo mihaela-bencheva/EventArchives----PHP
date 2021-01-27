@@ -1,25 +1,16 @@
-<!DOCTYPE html>
-<html>
-<head>
-    <!-- Required meta tags -->
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
+@extends('layouts.app')
 
-    <!-- Bootstrap CSS -->
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-giJF6kkoqNQ00vy+HMDP7azOuL0xtbfIcaT9wjKHr8RbDVddVHyTfAAsrekwKmP1" crossorigin="anonymous">
-<title>Types</title>
-</head>
-
-<body>
-    <div class="container">
-        @foreach ($types as $type)
-            <ul>
-                <li>
-                    <a target="_blank" href="{{ url('type/'.$type->id) }}">{{$type->name}}</a>
-                </li>
-            </ul>
-        @endforeach
+@section('content')
+    <div class="inner">
+        <div class="content">
+            <header>
+                <h2>Types</h2>
+            </header>
+            <div class="list-group">
+                @foreach ($types as $type)
+                    <a href="{{ url('type/'.$type->id) }}" class="list-group-item list-group-item-action">{{$type->name}}</a>
+                @endforeach   
+            </div>
+        </div>
     </div>
-</body>
-
-</html> 
+@endsection

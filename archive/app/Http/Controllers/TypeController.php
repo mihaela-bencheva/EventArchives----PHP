@@ -21,7 +21,7 @@ class TypeController extends BaseController
         $events = DB::table('events')
             ->join('event_types', 'events.id', '=', 'event_types.event_id')
             ->join('types', 'event_types.type_id', '=', 'types.id')
-            ->select('types.name', 'events.event_name', 'events.event_year')
+            ->select('types.name', 'events.event_name', 'events.event_year', 'events.id')
             ->where('types.id', $id)
             ->get();
 
@@ -35,7 +35,7 @@ class TypeController extends BaseController
         $events = DB::table('events')
             ->join('event_types', 'events.id', '=', 'event_types.event_id')
             ->join('types', 'event_types.type_id', '=', 'types.id')
-            ->select('types.name', 'events.event_name', 'events.image', 'events.event_year', 'events.description')
+            ->select('types.name', 'events.event_name', 'events.image', 'events.event_year', 'events.description', 'events.id')
             ->where('types.name', 'LIKE', "%{$typeInput}%")
             ->get();
 

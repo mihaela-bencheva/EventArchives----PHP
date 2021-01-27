@@ -1,31 +1,26 @@
-<!DOCTYPE html>
-<html>
-<head>
-    <!-- Required meta tags -->
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
+@extends('layouts.app')
 
-    <!-- Bootstrap CSS -->
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-giJF6kkoqNQ00vy+HMDP7azOuL0xtbfIcaT9wjKHr8RbDVddVHyTfAAsrekwKmP1" crossorigin="anonymous">
-<title>Archives</title>
-</head>
-
-<body>
-    <div class="container">
-        @foreach ($archives as $archive)
-            <div class="d-flex justify-content-center col-lg-12 col-xl-6 py-3">
-                <div class="card box-shadow  d-flex bg-danger">
-                    <p class="card-text text-white h5 p-2">Archive: {{$archive->archive_name}}</p>
-                    <p class="card-text text-white h5 p-2">Created: {{$archive->created_at}}</p>
-                    @if ($archive->description != null)
-                        <p class="card-text text-white h5 p-2">Description: {!! $archive->description !!}</p>
-                    @else
-                        <p class="card-text text-white h5 p-2">Description: -</p>
-                    @endif
+@section('content')
+    <div class="inner">
+        <div class="content">
+            <header>
+                <h2>Archives</h2>
+            </header>
+            @foreach ($archives as $archive)
+                <div class="card" style="width: 18rem;">
+                    <img src="../../images/archive.png" class="card-img-top" alt="...">
+                    <div class="card-body">
+                        <h5 class="card-title">{{$archive->archive_name}}</h5>
+                        <p class="card-text">Created: {{$archive->created_at}}</p>
+                        @if ($archive->description != null)
+                            <p class="card-text">Description: {!! $archive->description !!}</p>
+                        @else
+                            <p class="card-text">Description: -</p>
+                        @endif
+                        <a href="{{ url('archive/'.$archive->id) }}" class="btn btn-primary">View More</a>
+                    </div>
                 </div>
-            </div>
-        @endforeach
+            @endforeach
+        </div>
     </div>
-</body>
-
-</html> 
+@endsection

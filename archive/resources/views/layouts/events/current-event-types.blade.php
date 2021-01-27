@@ -1,7 +1,7 @@
 @foreach($types as $type)
     <ul>
         <li>
-            <p>{{$type->name}}</p>
+            <a href="{{ url('type/'.$type->id) }}">{{$type->name}}</a>
         </li>
     </ul>
 @endforeach

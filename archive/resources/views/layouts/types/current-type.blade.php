@@ -1,26 +1,20 @@
-<!DOCTYPE html>
-<html>
-<head>
-    <!-- Required meta tags -->
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
+@extends('layouts.current.app-current')
 
-    <!-- Bootstrap CSS -->
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-giJF6kkoqNQ00vy+HMDP7azOuL0xtbfIcaT9wjKHr8RbDVddVHyTfAAsrekwKmP1" crossorigin="anonymous">
-<title>Type</title>
-</head>
-
-<body>
-    <div class="container">
-        @foreach ($events as $event)
-            <div class="d-flex justify-content-center col-lg-12 col-xl-6 py-3">
-                <div class="card box-shadow  d-flex bg-danger">
-                    <p class="card-text text-white h5 p-2">Name: {{$event->event_name}}</p>
-                    <p class="card-text text-white h5 p-2">Year: {{$event->event_year}}</p>
+@section('content')
+    <div class="inner">
+        <div class="content">
+            <header>
+                <h2>Type</h2>
+            </header>
+            @foreach ($events as $event)
+            <div class="card" style="width: 18rem;">
+                <div class="card-body">
+                    <h5 class="card-title">{{$event->event_name}}</h5>
+                    <p class="card-text">Year: {{$event->event_year}}</p>
+                    <a href="{{ url('event/'.$event->id) }}" class="btn btn-primary">View More</a>
                 </div>
             </div>
-        @endforeach
+            @endforeach
+        </div>
     </div>
-</body>
-
-</html> 
+@endsection
