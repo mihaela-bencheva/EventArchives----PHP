@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-giJF6kkoqNQ00vy+HMDP7azOuL0xtbfIcaT9wjKHr8RbDVddVHyTfAAsrekwKmP1" crossorigin="anonymous">
+<title>Archive</title>
+</head>
+
+<body>
+    <div class="container">
+            <pre>{{var_dump($archive_event)}}</pre>
+        @foreach($archive_event as $archive_event)
+            <div class="d-flex justify-content-center col-lg-12 col-xl-6 py-3">
+                <div class="card box-shadow  d-flex bg-danger">
+                    <p class="card-text text-white h5 p-2">Name: {{$archive_event->archive_name}}</p>
+                    @if($archive_event->description != null)
+                        <p class="card-text text-white h5 p-2">Description: {!! $archive_event->description !!}</p>
+                    @endif
+                    <p class="card-text text-white h5 p-2">Created At: {{$archive_event->created_at}}</p>
+                </div>
+            </div>
+            <div class="d-flex justify-content-center col-lg-12 col-xl-6 py-3">
+                <div class="card box-shadow  d-flex bg-danger">
+                    <p class="card-text text-white h5 p-2">Name: {{$archive_event->event_name}}</p>
+                    <p class="card-text text-white h5 p-2">Year: {{$archive_event->event_year}}</p>
+                </div>
+            </div>
+        @endforeach
+    </div>
+</body>
+
+</html> 
