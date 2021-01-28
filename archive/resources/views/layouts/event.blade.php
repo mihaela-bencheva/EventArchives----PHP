@@ -7,11 +7,11 @@
                 <h2>Events</h2>
             </header>
                 @foreach ($events as $event)
-                    <div class="card" style="width: 18rem;height: 30rem">
+                    <div class="card mb-2" style="width: 18rem;height: 30rem">
                         @if ($event->image != null)
                             <img class="card-img-top" style="width:18rem;height:13rem" src="{{ url(''.$event->image.'') }}" alt="Image">
                         @else
-                            <img src="../../images/event.png" class="card-img-top" alt="...">
+                            <img src="../../images/event.jpg" class="card-img-top" alt="...">
                         @endif
                         <div class="card-body">
                             <h5 class="card-title">{{$event->event_name}}</h5>

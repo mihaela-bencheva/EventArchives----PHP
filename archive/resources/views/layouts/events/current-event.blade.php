@@ -9,8 +9,6 @@
             <div class="card" style="width: 18rem;">
                     @if ($event->image != null)
                         <img class="card-img-top" style="width:18rem;height:13rem" src="{{ url(''.$event->image.'') }}" alt="Image">
-                    @else
-                        <img src="..." class="card-img-top" alt="...">
                     @endif
                 <div class="card-body">
                     <h5 class="card-title">{{$event->event_name}}</h5>

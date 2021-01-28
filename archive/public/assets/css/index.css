@@ -2,3 +2,7 @@ div .card {
     display: inline-block; 
     vertical-align: middle;
 }
+
+#main .content {
+    text-align: center;
+}

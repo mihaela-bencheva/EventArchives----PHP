@@ -7,7 +7,7 @@
                 <h2>Archives</h2>
             </header>
             @foreach ($archives as $archive)
-                <div class="card" style="width: 18rem;">
+                <div class="card mb-2" style="width: 18rem;">
                     <img src="../../images/archive.png" class="card-img-top" alt="...">
                     <div class="card-body">
                         <h5 class="card-title">{{$archive->archive_name}}</h5>
