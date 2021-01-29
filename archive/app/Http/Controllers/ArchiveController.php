@@ -26,10 +26,4 @@ class ArchiveController extends BaseController
             ->get();
         return view('layouts.archives.current-archive', compact('archive_event'));
     }
-
-    public function getAllFiles()
-    {
-        $archives = DB::select('select file_name from files where id = 25');
-        return view('layouts/test',array('archives'=>$archives));
-    }
 }

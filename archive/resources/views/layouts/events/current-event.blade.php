@@ -13,18 +13,27 @@
                 <div class="card-body">
                     <h5 class="card-title">{{$event->event_name}}</h5>
                     <p class="card-text">{{$event->event_year}}</p>
-                    @if(!empty($types))
+                    @if($types != null)
                     <p class="card-text">
-                        Type:
+                        Types:
                         <br>
-                        @include('layouts.events.current-event-types')
+                        @foreach($types as $type)
+                            <ul>
+                                <li>
+                                    <a href="{{ url('type/'.$type->id) }}">{{$type->name}}</a>
+                                </li>
+                            </ul>
+                        @endforeach
                     </p>
                     @endif
-                    @if(!empty($archives))
+                    @if($archives != null)
                     <p class="card-text">
-                        Archive:
+                        Archives:
                         <br>
-                        @include('layouts.events.current-event-archives')
+                        @foreach($archives as $archive)
+                            <p class="card-text">{{$archive->archive_name}}</p>
+                            <p class="card-text">Created At: {{$archive->created_at}}</p>
+                        @endforeach
                     </p>
                     @endif
                 </div>
